@@ -6,26 +6,14 @@ const opusBitrate = params.opusBitrate || 96;
 
 const playerData = [
   {
-    // url: 'https://fetch-stream-audio.local.com/72kbps/bubbles.opus',
-    // url: 'https://fetch-stream-audio.local.com/2mbps/opus/panning-96kbit.opus',
-    url: `https://fetch-stream-audio.anthum.com/${throttleSpeed}/opus/demo/${opusBitrate}kbit.opus`,
+    url: 'https:/sapircast.centos.local:10000/SBqFO',
     mime: 'audio/ogg',
     codec: 'Opus',
     decoder: 'WebAssembly',
 
     // 2-4k seemed good for opus to prevent skipping; larger delays audio start
     readBufferSize: 1024 * 2
-  },
-  {
-    // url: 'https://fetch-stream-audio.local.com/2mbps/house-41000hz-trim.wav',
-    url: `https://fetch-stream-audio.anthum.com/${throttleSpeed}/house-41000hz-trim.wav`,
-    mime: 'audio/wav',
-    codec: 'PCM',
-    decoder: 'JavaScript',
-
-    // WAV trials showed 16K to be good. Lower values (2K) caused skipping
-    readBufferSize: 1024 * 16
-  },
+  }
 ];
 
 export default (wrapper) => {

@@ -19,8 +19,7 @@ export class AudioStreamPlayer {
 
   constructor(url, readBufferSize, decoderName) {
     switch (decoderName) {
-      case 'PCM': this._worker =  new Worker('../worker-decoder-wav.js'); break;
-      case 'OPUS': this._worker = new Worker('../worker-decoder-opus.js'); break;
+      case 'OPUS': this._worker = new Worker('worker-decoder-opus.js'); break;
       default: throw Error('Unsupported decoderName', decoderName);
     }
 
@@ -146,6 +145,7 @@ export class AudioStreamPlayer {
           audioBuffer = this._audioCtx.createBuffer(numberOfChannels, length, sampleRate);
 
     audioSrc.onended = () => {
+        console.log('audioSrc.onended ')
       this._audioSrcNodes.shift();
       this._abEnded++;
       this._updateState();
